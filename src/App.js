@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "./themes/useTheme";
 import styled, { ThemeProvider } from "styled-components";
+import WebFont from "webfontloader";
+import Login from "./views/Login";
 function App(props) {
   const { theme, themeLoaded, getFonts } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
@@ -9,26 +11,18 @@ function App(props) {
     setSelectedTheme(theme);
   }, [themeLoaded]);
 
-  //   useEffect(() => {
-  //     WebFont.load({
-  //       google: {
-  //         families: getFonts(),
-  //       },
-  //     });
-  //   });
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: getFonts(),
+      },
+    });
+  });
 
   return (
     themeLoaded && (
       <ThemeProvider theme={selectedTheme}>
-        <div className="grid grid-cols-5 min-h-screen">
-          <div
-            className="bg-gray-500 col-span-3"
-            style={{ background: selectedTheme.colors.body }}
-          >
-            Helllooooo
-          </div>
-          <div className="bg-red-500 col-span-2"></div>
-        </div>
+        <Login theme={selectedTheme} />
       </ThemeProvider>
     )
   );
