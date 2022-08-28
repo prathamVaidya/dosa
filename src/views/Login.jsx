@@ -12,7 +12,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 function Login(props) {
   const { theme } = props;
 
-  const [user, loading2, error2] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -52,9 +52,8 @@ function Login(props) {
     <div className="grid grid-cols-1 sm:h-screen sm:grid-cols-5 ">
       <div className=" col-span-2 bg-primary content-center flex items-center justify-center p-2 sm:p-0">
         <img
-          src={process.env.PUBLIC_URL + Constants.APP_LOGO}
+          src={process.env.PUBLIC_URL + Constants.APP_LOGO.WHITE}
           className="w-auto sm:h-48 h-16 object-cover"
-          // style={{ width: "512px" }}
         />
         {/* <h1 className="font-medium text-4xl leading-tight text-center">
           Super Company

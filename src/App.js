@@ -5,6 +5,9 @@ import WebFont from "webfontloader";
 import Login from "./views/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./views/Dashboard";
+import Logout from "./views/Logout";
+import Users from "./views/Dashboard/Users";
+import Setting from "./views/Dashboard/Setting";
 function App(props) {
   const { theme, themeLoaded, getFonts } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
@@ -28,10 +31,14 @@ function App(props) {
           <Routes>
             <Route path="/" element={<Dashboard theme={selectedTheme} />} />
             <Route path="/login" element={<Login theme={selectedTheme} />} />
+            <Route path="/logout" element={<Logout />} />
             <Route
               path="/dashboard"
               element={<Dashboard theme={selectedTheme} />}
-            />
+            >
+              <Route path="/dashboard/users" element={<Users />} />
+              <Route path="/dashboard/settings" element={<Setting />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
